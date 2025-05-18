@@ -21,7 +21,9 @@ module.exports = {
         padding: "padding-top padding-right padding-bottom padding-left",
       },
       colors: {
-        grey: {
+        grey: {   
+          base:"EAE8E1",
+
           0: "#FFFFFF",
           5: "#F9FAFB",
           10: "#F3F4F6",
@@ -34,6 +36,7 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
+        
       },
       borderRadius: {
         none: "0px",

@@ -1,164 +1,173 @@
 import { listCategories } from "@lib/data/categories"
 import { listCollections } from "@lib/data/collections"
-import { Text, clx } from "@medusajs/ui"
-
+import { Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "@modules/layout/components/medusa-cta"
+import { FaInstagram, FaEnvelope } from "react-icons/fa"
 
 export default async function Footer() {
-  const { collections } = await listCollections({
-    fields: "*products",
-  })
+  const { collections } = await listCollections({ fields: "*products" })
   const productCategories = await listCategories()
 
+  const goldGradient =
+    "linear-gradient(180deg, #E6C77B 0%, #C2A14A 60%, #7c5a13 100%)"
+
+  const gradientStyle = {
+    background: goldGradient,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  }
+
+  const softDark = "#3B2F13"
+
   return (
-    <footer className="border-t border-ui-border-base w-full">
-      <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
-          <div>
-            <LocalizedClientLink
-              href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
-            >
-              SWARNIKA HERITAGE
-            </LocalizedClientLink>
-          </div>
-          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
-            {productCategories && productCategories?.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Categories
-                </span>
-                <ul
-                  className="grid grid-cols-1 gap-2"
-                  data-testid="footer-categories"
-                >
-                  {productCategories?.slice(0, 6).map((c) => {
-                    if (c.parent_category) {
-                      return
-                    }
+    <footer className="w-full bg-[#9B8F3C] px-6 md:px-12 pt-10 pb-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10">
+        {/* Left: Story */}
+        <div className="flex flex-col items-center md:items-start gap-5 max-w-md">
+          <img
+            src="/stamp.png"
+            alt="Swarnika Heritage Stamp"
+            className="w-28 h-28 object-contain"
+          />
+          <p className="text-[#FFF4DB] text-[0.95rem] leading-relaxed text-center md:text-left">
+            <strong>Swarnika Heritage by Alankritha</strong> is a heartfelt
+            journey that began with the women of our family — a dream where each
+            piece is thoughtfully curated to drape the world in the comfort of
+            handloom elegance. Our royal stamp stands for authenticity — a mark
+            of honor for the original sarees we proudly present to the world.
+          </p>
+        </div>
 
-                    const children =
-                      c.category_children?.map((child) => ({
-                        name: child.name,
-                        handle: child.handle,
-                        id: child.id,
-                      })) || null
+        {/* Right: Links & Contact */}
+        <div className="flex flex-col md:items-end items-center gap-8">
+          <div className="flex flex-row flex-wrap justify-center md:justify-end gap-12">
+            {/* Categories */}
+            <div className="flex flex-col gap-2 min-w-[100px]">
+              <span className="font-semibold text-lg mb-1 tracking-wide text-[#FFF4DB]">
+                Categories
+              </span>
+              {productCategories?.slice(0, 5).map(
+                (c) =>
+                  !c.parent_category && (
+                    <LocalizedClientLink
+                      key={c.id}
+                      href={`/categories/${c.handle}`}
+                      className="hover:text-[#C2A14A] transition"
+                      style={{ color: softDark, fontWeight: 500 }}
+                    >
+                      {c.name}
+                    </LocalizedClientLink>
+                  )
+              )}
+            </div>
 
-                    return (
-                      <li
-                        className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
-                        key={c.id}
-                      >
-                        <LocalizedClientLink
-                          className={clx(
-                            "hover:text-ui-fg-base",
-                            children && "txt-small-plus"
-                          )}
-                          href={`/categories/${c.handle}`}
-                          data-testid="category-link"
-                        >
-                          {c.name}
-                        </LocalizedClientLink>
-                        {children && (
-                          <ul className="grid grid-cols-1 ml-3 gap-2">
-                            {children &&
-                              children.map((child) => (
-                                <li key={child.id}>
-                                  <LocalizedClientLink
-                                    className="hover:text-ui-fg-base"
-                                    href={`/categories/${child.handle}`}
-                                    data-testid="category-link"
-                                  >
-                                    {child.name}
-                                  </LocalizedClientLink>
-                                </li>
-                              ))}
-                          </ul>
-                        )}
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            )}
-            {collections && collections.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
+            {/* Quick Links */}
+            <div className="flex flex-col gap-2 min-w-[140px]">
+              <span className="font-semibold text-lg mb-1 tracking-wide text-[#FFF4DB]">
+                Quick Links
+              </span>
+              <LocalizedClientLink
+                href="/about"
+                className="hover:text-[#C2A14A] transition"
+                style={{ color: softDark, fontWeight: 500 }}
+              >
+                About Us
+              </LocalizedClientLink>
+              <LocalizedClientLink
+                href="/privacy&policy"
+                className="hover:text-[#C2A14A] transition"
+                style={{ color: softDark, fontWeight: 500 }}
+              >
+                Privacy Policy
+              </LocalizedClientLink>
+              <LocalizedClientLink
+                href="/termsofservices"
+                className="hover:text-[#C2A14A] transition"
+                style={{ color: softDark, fontWeight: 500 }}
+              >
+                Terms of Service
+              </LocalizedClientLink>
+              <LocalizedClientLink
+                href="/return&exchange"
+                className="hover:text-[#C2A14A] transition"
+                style={{ color: softDark, fontWeight: 500 }}
+              >
+                Return & Exchange Policy
+              </LocalizedClientLink>
+            </div>
+
+            {/* Collections */}
+            {collections?.length > 0 && (
+              <div className="flex flex-col gap-2 min-w-[120px]">
+                <span className="font-semibold text-lg mb-1 tracking-wide text-[#FFF4DB]">
                   Collections
                 </span>
-                <ul
-                  className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
-                    {
-                      "grid-cols-2": (collections?.length || 0) > 3,
-                    }
-                  )}
-                >
-                  {collections?.slice(0, 6).map((c) => (
-                    <li key={c.id}>
-                      <LocalizedClientLink
-                        className="hover:text-ui-fg-base"
-                        href={`/collections/${c.handle}`}
-                      >
-                        {c.title}
-                      </LocalizedClientLink>
-                    </li>
-                  ))}
-                </ul>
+                {collections.slice(0, 2).map((c) => (
+                  <LocalizedClientLink
+                    key={c.id}
+                    href={`/collections/${c.handle}`}
+                    className="hover:text-[#C2A14A] transition"
+                    style={{ color: softDark, fontWeight: 500 }}
+                  >
+                    {c.title}
+                  </LocalizedClientLink>
+                ))}
               </div>
             )}
-            <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">
-                Quick links{" "}
-              </span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
-                <li>
-                  <a
-                    href="https://github.com/medusajs"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://docs.medusajs.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Mail
-                  </a>
-                </li>
-                <li>
-                  <LocalizedClientLink
-                    href="/about"
-                    className="hover:text-ui-fg-base"
-                  >
-                    About Us
-                  </LocalizedClientLink>
-                </li>
-                <li>
-                  <LocalizedClientLink
-                    href="/terms"
-                    className="hover:text-ui-fg-base"
-                  >
-                  Terms & Conditions
-                  </LocalizedClientLink>
-                </li>
-              </ul>
-            </div>
+          </div>
+
+          {/* Contact Info */}
+          <div className="flex flex-col items-center md:items-end gap-3 mt-4">
+            <a
+              href="mailto:swarnikaheritage@mail.com"
+              className="flex items-center gap-2 font-semibold text-base transition hover:opacity-80"
+              style={gradientStyle}
+            >
+              <FaEnvelope size={20} /> swarnikaheritage@mail.com
+            </a>
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 font-semibold text-base transition hover:opacity-80"
+              style={gradientStyle}
+            >
+              <FaInstagram size={20} /> Instagram
+            </a>
           </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-          <Text className="txt-compact-small">
-            © {new Date().getFullYear()} SWARNIKA HERITAGE. All rights reserved.
-          </Text>
-          <MedusaCTA />
-        </div>
+      </div>
+
+      {/* Brand Name */}
+      <div className="flex flex-col items-center mt-10">
+        <span
+          className="text-[clamp(2.5rem,6vw,4rem)] font-bold leading-tight text-center tracking-tight"
+          style={{
+            ...gradientStyle,
+            filter: "drop-shadow(0 2px 8px #7c5a1340)",
+          }}
+        >
+          Swarnika Heritage
+        </span>
+        <span
+          className="text-[clamp(1.2rem,2.5vw,1.8rem)] font-medium"
+          style={gradientStyle}
+        >
+          by Alankritha
+        </span>
+      </div>
+
+      {/* Divider */}
+      <hr className="border-0 h-[2px] bg-gradient-to-r from-[#C2A14A] via-[#7c5a13] to-[#3B2F13] opacity-80 my-4 max-w-3xl mx-auto" />
+
+      {/* Copyright */}
+      <div className="flex flex-col items-center mt-2">
+        <Text
+          className="txt-compact-small text-[#FFF4DB]"
+          style={{ fontWeight: 500 }}
+        >
+          © {new Date().getFullYear()} SWARNIKA HERITAGE. All rights reserved.
+        </Text>
       </div>
     </footer>
   )
