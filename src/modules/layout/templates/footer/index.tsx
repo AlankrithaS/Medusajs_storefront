@@ -9,7 +9,7 @@ export default async function Footer() {
   const productCategories = await listCategories()
 
   const goldGradient =
-    "linear-gradient(180deg, #E6C77B 0%, #C2A14A 60%, #7c5a13 100%)"
+    "linear-gradient(180deg,rgb(179, 132, 13) 0%,rgb(131, 105, 40) 60%,rgb(73, 52, 8) 100%)"
 
   const gradientStyle = {
     background: goldGradient,
@@ -117,24 +117,7 @@ export default async function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col items-center md:items-end gap-3 mt-4">
-            <a
-              href="mailto:swarnikaheritage@mail.com"
-              className="flex items-center gap-2 font-semibold text-base transition hover:opacity-80"
-              style={gradientStyle}
-            >
-              <FaEnvelope size={20} /> swarnikaheritage@mail.com
-            </a>
-            <a
-              href="https://instagram.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 font-semibold text-base transition hover:opacity-80"
-              style={gradientStyle}
-            >
-              <FaInstagram size={20} /> Instagram
-            </a>
-          </div>
+          {/* Removed email and Instagram icons and links as requested */}
         </div>
       </div>
 

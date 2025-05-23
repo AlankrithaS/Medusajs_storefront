@@ -37,34 +37,31 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="w-full bg-[#EAE8E1] py-24 px-4 md:px-8 relative overflow-hidden">
-      {/* Decorative Blob */}
-      <div className="absolute -top-24 -left-36 w-[400px] h-[400px] bg-gradient-to-br from-[#D8B778]/30 to-transparent rounded-full blur-2xl pointer-events-none z-0" />
-
-      <div className="max-w-3xl mx-auto relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-14 text-gray-900">
+    <section className="w-full bg-[#EAE8E1] py-12 px-4 md:px-12">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-2xl font-semibold text-center mb-8 text-gray-900">
           FAQ – What You Need to Know
         </h2>
 
-        <div className="space-y-6">
+        <div className="space-y-4">
           {faqs.map((faq, idx) => (
             <div
               key={idx}
-              className={`transition-all duration-300 rounded-2xl bg-[#F6F2EE] border-l-4 ${
+              className={`transition-all duration-300 rounded-xl bg-[#F6F2EE] border-l-4 ${
                 openIndex === idx
-                  ? "border-[#B89347] shadow-lg scale-[1.01]"
+                  ? "border-[#B89347] shadow-md"
                   : "border-transparent shadow-sm"
-              } hover:shadow-md hover:scale-[1.01]`}
+              }`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full flex justify-between items-center px-6 py-5 md:py-6 text-left"
+                className="w-full flex justify-between items-center px-4 py-4 md:px-6 md:py-5 text-left"
               >
-                <span className="text-lg md:text-xl font-medium text-gray-900 group-hover:text-[#B89347] transition">
+                <span className="text-base md:text-lg font-medium text-gray-900 transition">
                   {faq.question}
                 </span>
                 <svg
-                  className={`w-6 h-6 transition-transform duration-300 ${
+                  className={`w-5 h-5 transition-transform duration-300 ${
                     openIndex === idx
                       ? "rotate-180 text-[#B89347]"
                       : "text-gray-400"
@@ -83,7 +80,7 @@ export default function FAQSection() {
               </button>
 
               <div
-                className={`px-6 pb-6 text-gray-700 text-base md:text-[1.05rem] leading-relaxed transition-all duration-300 ease-in-out ${
+                className={`px-6 md:px-4 pb-6 text-gray-700 text-sm md:text-base leading-relaxed transition-all duration-300 ease-in-out ${
                   openIndex === idx ? "block animate-fadeIn" : "hidden"
                 }`}
               >

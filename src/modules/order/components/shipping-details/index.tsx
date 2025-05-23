@@ -10,7 +10,7 @@ type ShippingDetailsProps = {
 
 const ShippingDetails = ({ order }: ShippingDetailsProps) => {
   return (
-    <div>
+    <div style={{ backgroundColor: "#EAE8E1" }}>
       <Heading level="h2" className="flex flex-row text-3xl-regular my-6">
         Delivery
       </Heading>

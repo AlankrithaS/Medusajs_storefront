@@ -30,7 +30,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
     <>
       <div
         className="content-container flex flex-col small:flex-row small:items-start py-6 relative"
-        data-testid="product-container"
+        data-testid="product-container" style={{ backgroundColor: "#EAE8E1" }}
       >
         <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-6">
           <ProductInfo product={product} />

@@ -39,7 +39,7 @@ export default function CategoryTemplate({
   return (
     <div
       className="flex flex-col small:flex-row small:items-start py-6 content-container"
-      data-testid="category-container"
+      data-testid="category-container" style={{ backgroundColor: "#EAE8E1" }}
     >
       <RefinementList sortBy={sort} data-testid="sort-by-container" />
       <div className="w-full">

@@ -21,6 +21,7 @@ const ItemsPreviewTemplate = ({ cart }: ItemsTemplateProps) => {
         "pl-[1px] overflow-y-scroll overflow-x-hidden no-scrollbar max-h-[420px]":
           hasOverflow,
       })}
+      style={{ backgroundColor: "#EAE8E1" }}
     >
       <Table>
         <Table.Body data-testid="items-table">
