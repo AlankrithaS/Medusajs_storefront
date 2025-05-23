@@ -1,7 +1,7 @@
 "use client"
 
 import { Badge, Heading, Input, Label, Text, Tooltip } from "@medusajs/ui"
-import React, { useActionState } from "react";
+import React, { useActionState } from "react"
 
 import { applyPromotions, submitPromotionForm } from "@lib/data/cart"
 import { convertToLocale } from "@lib/util/money"
@@ -52,7 +52,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
   const [message, formAction] = useActionState(submitPromotionForm, null)
 
   return (
-    <div className="w-full bg-white flex flex-col">
+    <div className="w-full bg-custom-bg flex flex-col">
       <div className="txt-medium">
         <form action={(a) => addPromotionCode(a)} className="w-full mb-5">
           <Label className="flex gap-x-1 my-2 items-center">

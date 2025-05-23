@@ -93,7 +93,13 @@ const ShippingAddress = ({
   }
 
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: "#EAE8E1",
+        minHeight: "100vh",
+        width: "100%",
+      }}
+    >
       {customer && (addressesInRegion?.length || 0) > 0 && (
         <Container className="mb-6 flex flex-col gap-y-4 p-5">
           <p className="text-small-regular">
@@ -212,7 +218,7 @@ const ShippingAddress = ({
           data-testid="shipping-phone-input"
         />
       </div>
-    </>
+    </div>
   )
 }
 

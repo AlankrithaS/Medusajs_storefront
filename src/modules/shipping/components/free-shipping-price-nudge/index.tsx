@@ -142,7 +142,10 @@ function FreeShippingInline({
   }
 }) {
   return (
-    <div className="bg-neutral-100 p-2 rounded-lg border" style={{ backgroundColor: "#EAE8E1" }}>
+    <div
+      className="bg-neutral-100 p-2 rounded-lg border"
+      style={{ backgroundColor: "#EAE8E1" }}
+    >
       <div className="space-y-1.5">
         <div className="flex justify-between text-xs text-neutral-600">
           <div>
@@ -271,7 +274,7 @@ function FreeShippingPopup({
           </LocalizedClientLink>
 
           <LocalizedClientLink
-            className="flex-grow rounded-2xl bg-white text-neutral-950 shadow-none outline-none border-[1px] border-white text-[15px] py-2.5 px-4 text-center"
+            className="flex-grow rounded-2xl bg-custom-bg text-neutral-950 shadow-none outline-none border-[1px] border-white text-[15px] py-2.5 px-4 text-center"
             href="/store"
           >
             View products

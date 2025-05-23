@@ -37,7 +37,7 @@ const CartItemSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     }, [innerRef.current?.value])
 
     return (
-      <div>
+      <div style={{ backgroundColor: "#EAE8E1" }}>
         <IconBadge
           onFocus={() => innerRef.current?.focus()}
           onBlur={() => innerRef.current?.blur()}
