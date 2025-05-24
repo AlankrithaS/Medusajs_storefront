@@ -1,10 +1,9 @@
-import { Github } from "@medusajs/icons"
 import { Button, Heading } from "@medusajs/ui"
 import "./hero.css"
 
 const Hero = () => {
   return (
-    <div className="h-[85vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle overflow-hidden">
+    <div className="h-[85vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle overflow-hidden" style={{ backgroundColor: "#EAE8E1" }}>
 
       {/* Background Lotus Images */}
       <img
@@ -25,7 +24,7 @@ const Hero = () => {
         <img
           src="/logo.png"
           alt="Brand Logo"
-          className="w-28 md:w-32 mx-auto mb-1 animate-fade-in"
+          className="w-32 md:w-36 mx-auto mb-1 animate-fade-in"
         />
 
         {/* Headings */}
@@ -58,7 +57,6 @@ const Hero = () => {
         <a href="/store">
           <Button variant="secondary" className="animate-fade-in">
             Explore the Heritage
-            <Github />
           </Button>
         </a>
       </div>
